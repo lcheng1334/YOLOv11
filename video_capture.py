@@ -6,6 +6,8 @@ model = YOLO("/home/lc/code/yolo/yolo11n-seg.pt")
 model.eval()
 
 cap = cv2.VideoCapture(0)
+cap.set(3, 300)
+cap.set(4, 100)
 
 # 检查摄像头是否成功打开
 if not cap.isOpened():
@@ -24,6 +26,7 @@ while True:
 
     # 获取边界框数据
     boxes = results[0].boxes  # 获取预测的边界框
+    print(boxes)
 
     # 获取边界框坐标 (x, y, w, h)
     for box in boxes:  # 访问每个框
